@@ -35,20 +35,20 @@ rm       = rm -f
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
 	@$(LINKER) $@ $(LFLAGS) $(OBJECTS)
-	@echo "Linking complete!"
+	@echo "linking complete..."
 
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled "$<" successfully!"
+	@echo "compiled "$<" successfully..."
 
 .PHONEY: clean
 clean:
 	@$(rm) $(OBJECTS)
-	@echo "Cleanup complete!"
+	@echo "removed objects..."
 
 .PHONEY: remove
 remove: clean
 	@$(rm) $(BINDIR)/$(TARGET)
-	@echo "Executable removed!"
+	@echo "removed binary..."
